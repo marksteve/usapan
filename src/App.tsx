@@ -61,7 +61,7 @@ function User() {
   const { status, data: user } = useUser()
 
   if (user === undefined || status === 'loading') {
-    return <div className="usapan-loading">Loading&hellip;</div>
+    return <div className="usapan-loading">Loading user&hellip;</div>
   }
 
   function handleLogin(e: React.MouseEvent<HTMLAnchorElement>) {
@@ -78,7 +78,7 @@ function User() {
   if (!user) {
     return (
       <div className="usapan-login">
-        Start the discussion by{' '}
+        Join the discussion by{' '}
         <a className="usapan-login-link" href="#" onClick={handleLogin}>
           logging in with Google
         </a>
@@ -125,7 +125,7 @@ function Comments({ postRef }: CommentsProps) {
   )
 
   if (status === 'loading') {
-    return <div className="usapan-loading">Loading&hellip;</div>
+    return <div className="usapan-loading">Loading comments&hellip;</div>
   }
 
   const nestedComments = stratify<{ id: string; parentId?: string }>()
@@ -184,7 +184,7 @@ function Comment({ postRef, comment }: CommentProps) {
             <Submit postRef={postRef} parentId={comment.id} />
           ) : null}
           <a href="#" onClick={toggleReply}>
-            {replyShown ? 'Cancel' : 'Reply'}
+            {replyShown ? 'Discard' : 'Reply'}
           </a>
         </div>
       ) : null}
@@ -238,7 +238,7 @@ function Submit({ postRef, parentId }: SubmitProps) {
   }
 
   return (
-    <form className="usapan-form" onSubmit={handleSubmit}>
+    <form className="usapan-submit" onSubmit={handleSubmit}>
       <textarea ref={textareaRef} name="text" required></textarea>
       <button type="submit">Submit</button>
     </form>
