@@ -167,27 +167,33 @@ function Comment({ postRef, comment }: CommentProps) {
 
   return (
     <li key={comment.id} className="usapan-comment">
-      <div className="usapan-comment-meta">
-        <strong className="usapan-comment-name">{name}</strong>
-        <time
-          className="usapan-comment-timestamp"
-          dateTime={timestamp?.toDate().toISOString()}
-          title={timestamp?.toDate().toISOString()}
-        >
-          {timestamp ? <TimeAgo date={timestamp.toDate()} /> : 'moments ago'}
-        </time>
-      </div>
-      <div className="usapan-comment-text">{text}</div>
-      {user ? (
-        <div className="usapan-comment-reply">
-          {replyShown ? (
-            <Submit postRef={postRef} parentId={comment.id} />
-          ) : null}
-          <a href="#" onClick={toggleReply}>
-            {replyShown ? 'Discard' : 'Reply'}
-          </a>
+      <div className="usapan-comment-content">
+        <div className="usapan-comment-meta">
+          <strong className="usapan-comment-name">{name}</strong>
+          <time
+            className="usapan-comment-timestamp"
+            dateTime={timestamp?.toDate().toISOString()}
+            title={timestamp?.toDate().toISOString()}
+          >
+            {timestamp ? <TimeAgo date={timestamp.toDate()} /> : 'moments ago'}
+          </time>
         </div>
-      ) : null}
+        <div className="usapan-comment-text">{text}</div>
+        {user ? (
+          <div className="usapan-comment-reply">
+            {replyShown ? (
+              <Submit postRef={postRef} parentId={comment.id} />
+            ) : null}
+            <a
+              className="usapan-comment-reply-link"
+              href="#"
+              onClick={toggleReply}
+            >
+              {replyShown ? 'Discard Reply' : 'Reply'}
+            </a>
+          </div>
+        ) : null}
+      </div>
       <ul className="usapan-comments">
         {replies?.map((comment) => (
           <Comment
@@ -240,7 +246,13 @@ function Submit({ postRef, parentId }: SubmitProps) {
 
   return (
     <form className="usapan-submit" onSubmit={handleSubmit}>
-      <textarea ref={textareaRef} name="text" required></textarea>
+      <textarea
+        className="usapan-submit-textarea"
+        ref={textareaRef}
+        name="text"
+        rows={5}
+        required
+      ></textarea>
       <button type="submit">Submit</button>
     </form>
   )

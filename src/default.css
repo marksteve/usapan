@@ -1,0 +1,48 @@
+.usapan-login,
+.usapan-user,
+.usapan-loading,
+.usapan-comment {
+  padding: 0.5rem 0;
+}
+
+.usapan-comment-text,
+.usapan-comment-reply,
+.usapan-submit {
+  padding-bottom: 0.5rem;
+}
+
+.usapan-comments {
+  list-style: none;
+  padding-left: 0;
+}
+
+.usapan-comments .usapan-comments {
+  padding-left: 2rem;
+  border-left: 1px solid whitesmoke;
+}
+
+.usapan-comment-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.usapan-comment-timestamp {
+  font-size: 80%;
+  color: silver;
+}
+
+.usapan-comment-reply-link {
+  font-size: 80%;
+}
+
+.usapan-submit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 0.5rem;
+}
+
+.usapan-submit-textarea {
+  align-self: stretch;
+}
