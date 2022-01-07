@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /usapan/{document=**} {
+      allow read: if true;
+    }
+    match /usapan/{postId}/comments/{commentId} {
+      allow create:
+      	if request.resource.data.uid == request.auth.uid
+      	&& request.resource.data.name == request.auth.token.name;
+      allow delete: if resource.data.uid == request.auth.uid;
+    }
+  }
+}
