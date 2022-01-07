@@ -235,6 +235,7 @@ function Submit({ postRef, parentId }: SubmitProps) {
       timestamp: serverTimestamp(),
       text,
     })
+    textareaRef.current!.value = ''
   }
 
   return (
