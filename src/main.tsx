@@ -9,6 +9,7 @@ type UsapanConfig = {
   firebaseConfig: any
   firestoreCollection: string
   pageId: string
+  recaptchaSiteKey?: string
 }
 
 export default function usapan({

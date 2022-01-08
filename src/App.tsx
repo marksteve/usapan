@@ -1,4 +1,5 @@
 import { HierarchyNode, stratify } from 'd3-hierarchy'
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check'
 import {
   getAuth,
   GoogleAuthProvider,
@@ -31,12 +32,17 @@ import {
 type AppProps = {
   firestoreCollection: string
   pageId: string
+  recaptchaSiteKey?: string
 }
 
-serverTimestamp
-
-function App({ firestoreCollection, pageId }: AppProps) {
+function App({ firestoreCollection, pageId, recaptchaSiteKey }: AppProps) {
   const app = useFirebaseApp()
+  if (recaptchaSiteKey) {
+    initializeAppCheck(app, {
+      provider: new ReCaptchaV3Provider(recaptchaSiteKey),
+      isTokenAutoRefreshEnabled: true,
+    })
+  }
   const auth = getAuth(app)
   initializeFirestore(app, { ignoreUndefinedProperties: true })
   const firestore = getFirestore(app)
