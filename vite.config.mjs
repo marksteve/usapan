@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react'
+import remarkGfm from 'remark-gfm'
 import remarkHtml from 'remark-html'
 import remarkParse from 'remark-parse'
 import { readSync } from 'to-vfile'
@@ -30,6 +31,7 @@ export default defineConfig({
 function parseReadme() {
   return unified()
     .use(remarkParse)
+    .use(remarkGfm)
     .use(remarkHtml)
     .processSync(readSync('README.md'))
 }
