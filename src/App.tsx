@@ -18,6 +18,7 @@ import {
   Timestamp,
 } from 'firebase/firestore'
 import React, { useEffect, useRef, useState } from 'react'
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 import TimeAgo from 'react-timeago'
 import {
   AuthProvider,
@@ -48,15 +49,17 @@ function App({ firestoreCollection, pageId, recaptchaSiteKey }: AppProps) {
   const firestore = getFirestore(app)
   const pageRef = doc(firestore, firestoreCollection, pageId)
   return (
-    <AuthProvider sdk={auth}>
-      <FirestoreProvider sdk={firestore}>
-        <div className="usapan-container">
-          <User />
-          <Submit pageRef={pageRef} />
-          <Comments pageRef={pageRef} />
-        </div>
-      </FirestoreProvider>
-    </AuthProvider>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <AuthProvider sdk={auth}>
+        <FirestoreProvider sdk={firestore}>
+          <div className="usapan-container">
+            <User />
+            <Submit pageRef={pageRef} />
+            <Comments pageRef={pageRef} />
+          </div>
+        </FirestoreProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   )
 }
 
@@ -262,4 +265,8 @@ function Submit({ pageRef, parentId }: SubmitProps) {
       <button type="submit">Submit</button>
     </form>
   )
+}
+
+function ErrorFallback({ error }: FallbackProps) {
+  return <div className="usapan-error">{error.toString()}</div>
 }
