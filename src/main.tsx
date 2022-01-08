@@ -2,12 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { FirebaseAppProvider } from 'reactfire'
 import App from './App'
+import './default.css'
 
 type UsapanConfig = {
   el: HTMLElement
   firebaseConfig: any
   firestoreCollection: string
-  postId: string
+  pageId: string
 }
 
 export default function usapan({

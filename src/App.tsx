@@ -30,24 +30,24 @@ import {
 
 type AppProps = {
   firestoreCollection: string
-  postId: string
+  pageId: string
 }
 
 serverTimestamp
 
-function App({ firestoreCollection, postId }: AppProps) {
+function App({ firestoreCollection, pageId }: AppProps) {
   const app = useFirebaseApp()
   const auth = getAuth(app)
   initializeFirestore(app, { ignoreUndefinedProperties: true })
   const firestore = getFirestore(app)
-  const postRef = doc(firestore, firestoreCollection, postId)
+  const pageRef = doc(firestore, firestoreCollection, pageId)
   return (
     <AuthProvider sdk={auth}>
       <FirestoreProvider sdk={firestore}>
         <div className="usapan-container">
           <User />
-          <Submit postRef={postRef} />
-          <Comments postRef={postRef} />
+          <Submit pageRef={pageRef} />
+          <Comments pageRef={pageRef} />
         </div>
       </FirestoreProvider>
     </AuthProvider>
@@ -98,7 +98,7 @@ function User() {
 }
 
 type CommentsProps = {
-  postRef: DocumentReference
+  pageRef: DocumentReference
 }
 
 type CommentData = {
@@ -110,11 +110,11 @@ type CommentData = {
   text: string
 }
 
-function Comments({ postRef }: CommentsProps) {
+function Comments({ pageRef }: CommentsProps) {
   const firestore = useFirestore()
   const commentsRef = collection(
     firestore,
-    postRef.path,
+    pageRef.path,
     'comments'
   ) as CollectionReference<CommentData>
   const { status, data: comments } = useFirestoreCollectionData<CommentData>(
@@ -140,7 +140,7 @@ function Comments({ postRef }: CommentsProps) {
       {nestedComments.children?.map((comment) => (
         <Comment
           key={comment.id}
-          postRef={postRef}
+          pageRef={pageRef}
           comment={comment as HierarchyNode<CommentData>}
         />
       ))}
@@ -149,11 +149,11 @@ function Comments({ postRef }: CommentsProps) {
 }
 
 type CommentProps = {
-  postRef: DocumentReference
+  pageRef: DocumentReference
   comment: HierarchyNode<CommentData>
 }
 
-function Comment({ postRef, comment }: CommentProps) {
+function Comment({ pageRef, comment }: CommentProps) {
   const { data: user } = useUser()
   const { data, children: replies } = comment
   const { name, timestamp, text } = data
@@ -182,7 +182,7 @@ function Comment({ postRef, comment }: CommentProps) {
         {user ? (
           <div className="usapan-comment-reply">
             {replyShown ? (
-              <Submit postRef={postRef} parentId={comment.id} />
+              <Submit pageRef={pageRef} parentId={comment.id} />
             ) : null}
             <a
               className="usapan-comment-reply-link"
@@ -198,7 +198,7 @@ function Comment({ postRef, comment }: CommentProps) {
         {replies?.map((comment) => (
           <Comment
             key={comment.id}
-            postRef={postRef}
+            pageRef={pageRef}
             comment={comment as HierarchyNode<CommentData>}
           />
         ))}
@@ -208,14 +208,14 @@ function Comment({ postRef, comment }: CommentProps) {
 }
 
 type SubmitProps = {
-  postRef: DocumentReference
+  pageRef: DocumentReference
   parentId?: string
 }
 
-function Submit({ postRef, parentId }: SubmitProps) {
+function Submit({ pageRef, parentId }: SubmitProps) {
   const { data: user } = useUser()
   const firestore = useFirestore()
-  const commentsRef = collection(firestore, postRef.path, 'comments')
+  const commentsRef = collection(firestore, pageRef.path, 'comments')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
