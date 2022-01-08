@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "usapan",
+    "public": "example",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
