@@ -17,7 +17,7 @@ A no-frills comments widget powered by Firebase
 
     ```
     <script type="module">
-      import usapan from 'https://unpkg.com/usapan@0.1.0/dist/usapan.es.js'
+      import usapan from 'https://unpkg.com/usapan@0.1.1/dist/usapan.es.js'
       usapan({
         el: document.querySelector('#comments'), // Element to render comments 
         firebaseConfig: { ... },                 // Your Firebase config
@@ -30,7 +30,7 @@ A no-frills comments widget powered by Firebase
 7. (Optional) Load the default stylesheet:
 
     ```
-    <link href="https://unpkg.com/usapan@0.1.0/dist/style.css" rel="stylesheet" />
+    <link href="https://unpkg.com/usapan@0.1.1/dist/style.css" rel="stylesheet" />
     ```
 
 ## Todo
