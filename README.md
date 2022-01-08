@@ -1,5 +1,5 @@
 # Usapan
-A no-frills comments widget powered by Firestore.
+A no-frills comments widget powered by Firebase
 
 ## Features
 - Unstyled
@@ -32,3 +32,15 @@ A no-frills comments widget powered by Firestore.
     ```
     <link href="https://unpkg.com/usapan@0.1.0/dist/style.css" rel="stylesheet" />
     ```
+
+## Todo
+
+- [ ] Permalinks
+- [ ] Reactions
+- [ ] Anonymous mode
+- [ ] Reduce bundle size
+- [ ] Moderation
+
+## Demo
+
+[https://usapan.marksteve.com](https://usapan.marksteve.com)
