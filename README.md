@@ -1,5 +1,10 @@
 # Usapan
-A no-frills commenting system using Firestore.
+A no-frills comments widget powered by Firestore.
+
+## Features
+- Unstyled
+- Serverless
+- Nested comments
 
 ## Usage
 1. Set up a Firebase project

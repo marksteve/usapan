@@ -23,31 +23,7 @@
 
 <body>
   <main>
-    <h1>Usapan</h1>
-    <p>A no-frills commenting system using Firestore.</p>
-    <h2>Usage</h2>
-    <ol>
-      <li>Set up a Firebase project</li>
-      <li>Enable the Google sign-in provider</li>
-      <li>Set up Firestore security rules. Check out <code>firestore.rules.example</code> in the repository.</li>
-      <li>Add a web app to the project and note its config</li>
-      <li>Add the following code in your page:
-        <pre>
-&lt;script type="module"&gt;
-import usapan from 'https://unpkg.com/usapan@0.0.1/dist/usapan.es.js'
-usapan({
-  el: document.querySelector('#comments'), // Element to render comments 
-  firebaseConfig: { ... },                 // Your Firebase config
-  firestoreCollection: 'usapan',           // Root Firestore collection
-  pageId: 'my-page',                       // Unique page identifier
-})
-&lt;/script&gt;
-        </pre>
-      </li>
-      <li>Optional: Load the default stylesheet:
-        <pre>&lt;link href="https://unpkg.com/usapan@0.0.1/dist/style.css" rel="stylesheet" /&gt;</pre>
-      </li>
-    </ol>
+    <%- readme %>
     <h2>Comments</h2>
     <div id="comments"></div>
   </main>
