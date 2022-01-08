@@ -26,5 +26,16 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/usapan.umd.js",
+  "module": "./dist/usapan.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/usapan.es.js",
+      "require": "./dist/usapan.umd.js"
+    }
   }
 }
