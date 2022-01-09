@@ -41,7 +41,7 @@ function App({ firestoreCollection, pageId, recaptchaSiteKey }: AppProps) {
   if (recaptchaSiteKey) {
     initializeAppCheck(app, {
       provider: new ReCaptchaV3Provider(recaptchaSiteKey),
-      isTokenAutoRefreshEnabled: true,
+      isTokenAutoRefreshEnabled: import.meta.env.PROD,
     })
   }
   const auth = getAuth(app)
