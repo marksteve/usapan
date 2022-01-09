@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap');
+
+:root {
+  --bg: #rgb(6 8 61);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #06083d url('uuundulate.svg') no-repeat right 3rem fixed;
+  background-size: 50%;
+  font-family: Inter, sans-serif;
+  line-height: 1.5;
+  display: flex;
+  justify-content: flex-start;
+  color: hsl(30, 100%, 50%);
+}
+
+main {
+  max-width: 80ch;
+  padding: 3rem;
+  width: 100%;
+}
+
+h1,
+h2,
+a,
+code {
+  color: hsl(30, 100%, 70%);
+}
+
+code {
+  font-family: JetBrains Mono, monospace;
+}
+
+pre {
+  background: rgba(6, 8, 61, 0.5);
+  width: 100%;
+  overflow-x: auto;
+}
+
+.task-list-item {
+  list-style: none;
+}
+
+textarea {
+  font: inherit;
+}
+
+button {
+  background: hsl(30, 100%, 70%);
+  border: 0;
+  font: inherit;
+}

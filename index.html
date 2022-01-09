@@ -6,23 +6,6 @@
   <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Usapan</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      line-height: 1.5;
-      display: flex;
-      justify-content: center;
-    }
-
-    main {
-      max-width: 80ch;
-      width: 100%;
-    }
-
-    .task-list-item {
-      list-style: none;
-    }
-  </style>
 </head>
 
 <body>
@@ -32,6 +15,7 @@
     <div id="comments"></div>
   </main>
   <script type="module">
+    import '/src/example.css'
     import usapan from '/src/main.tsx'
     usapan({
       el: document.querySelector('#comments'),

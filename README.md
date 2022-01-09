@@ -1,6 +1,8 @@
 # Usapan
 A no-frills comments widget powered by Firebase
 
+_Usapan is the Filipino word for discussion_
+
 ## Features
 - Unstyled
 - Serverless
@@ -23,7 +25,7 @@ A no-frills comments widget powered by Firebase
         firebaseConfig: { ... },                 // Your Firebase config
         firestoreCollection: 'usapan',           // Root Firestore collection
         pageId: 'my-page',                       // Unique page identifier
-        recaptchaSiteKey: '...',                 // reCAPTCHA v3 site key for AppCheck
+        recaptchaSiteKey: '...',                 // reCAPTCHA v3 site key for App Check
       })
     </script>
     ```
@@ -44,3 +46,20 @@ A no-frills comments widget powered by Firebase
 ## Demo
 
 [https://usapan.marksteve.com](https://usapan.marksteve.com)
+
+## Development
+
+
+```
+npm i
+npm run dev
+```
+
+## Release
+
+```
+npm version <major|minor|patch>
+npm publish
+```
+
+Example page is automatically deployed on merge to main.
