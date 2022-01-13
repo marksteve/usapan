@@ -1,5 +1,4 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'preact'
 import { FirebaseAppProvider } from 'reactfire'
 import App from './App'
 import './default.css'
@@ -17,12 +16,10 @@ export default function usapan({
   firebaseConfig,
   ...config
 }: UsapanConfig) {
-  ReactDOM.render(
-    <React.StrictMode>
-      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-        <App {...config} />
-      </FirebaseAppProvider>
-    </React.StrictMode>,
+  render(
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+      <App {...config} />
+    </FirebaseAppProvider>,
     el
   )
 }

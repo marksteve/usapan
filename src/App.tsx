@@ -17,7 +17,8 @@ import {
   serverTimestamp,
   Timestamp,
 } from 'firebase/firestore'
-import React, { useEffect, useRef, useState } from 'react'
+import { JSX } from 'preact'
+import { useEffect, useRef, useState } from 'preact/hooks'
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 import TimeAgo from 'react-timeago'
 import {
@@ -73,13 +74,13 @@ function User() {
     return <div className="usapan-loading">Loading user&hellip;</div>
   }
 
-  function handleLogin(e: React.MouseEvent<HTMLAnchorElement>) {
+  function handleLogin(e: MouseEvent) {
     e.preventDefault()
     const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider)
   }
 
-  function handleLogout(e: React.MouseEvent<HTMLAnchorElement>) {
+  function handleLogout(e: MouseEvent) {
     e.preventDefault()
     signOut(auth)
   }
@@ -169,7 +170,7 @@ function Comment({ pageRef, comment }: CommentProps) {
 
   const [replyShown, setReplyShown] = useState(false)
 
-  function toggleReply(e: React.MouseEvent<HTMLAnchorElement>) {
+  function toggleReply(e: MouseEvent) {
     e.preventDefault()
     setReplyShown(!replyShown)
   }
@@ -235,7 +236,7 @@ function Submit({ pageRef, parentId }: SubmitProps) {
     return null
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: JSX.TargetedEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.target as HTMLFormElement
     form.reportValidity()
