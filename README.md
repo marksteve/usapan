@@ -19,7 +19,7 @@ _Usapan is the Filipino word for discussion_
 
     ```
     <script type="module">
-      import usapan from 'https://unpkg.com/usapan@0.1.2/dist/usapan.es.js'
+      import usapan from 'https://unpkg.com/usapan@0.2.0/dist/usapan.es.js'
       usapan({
         el: document.querySelector('#comments'), // Element to render comments 
         firebaseConfig: { ... },                 // Your Firebase config
@@ -32,7 +32,7 @@ _Usapan is the Filipino word for discussion_
 7. (Optional) Load the default stylesheet:
 
     ```
-    <link href="https://unpkg.com/usapan@0.1.2/dist/style.css" rel="stylesheet" />
+    <link href="https://unpkg.com/usapan@0.2.0/dist/style.css" rel="stylesheet" />
     ```
 
 ## Todo

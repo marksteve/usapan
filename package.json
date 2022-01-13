@@ -1,7 +1,7 @@
 {
   "name": "usapan",
   "description": "A no-frills comments widget powered by Firebase",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
