@@ -42,5 +42,8 @@
       "import": "./dist/usapan.es.js",
       "require": "./dist/usapan.umd.js"
     }
+  },
+  "volta": {
+    "node": "16.13.2"
   }
 }
