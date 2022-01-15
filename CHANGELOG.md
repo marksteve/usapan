@@ -1,8 +1,12 @@
 # Changelog
 
+## [Unreleased]
+### Added
+- Add comment permalink
+
 ## [0.2.0] - 2022-01-13
 ### Changed
-- Replaced React with Preact to reduce bundle size
+- Replace React with Preact to reduce bundle size
 
 ## [0.1.2] - 2022-01-09
 ### Fixed

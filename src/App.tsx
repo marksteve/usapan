@@ -134,6 +134,13 @@ function Comments({ pageRef }: CommentsProps) {
     }
   )
 
+  useEffect(() => {
+    const hashPrefix = '#comment-'
+    if (location.hash.startsWith(hashPrefix)) {
+      document.querySelector(location.hash)?.scrollIntoView()
+    }
+  }, [comments])
+
   if (status === 'loading') {
     return <div className="usapan-loading">Loading comments&hellip;</div>
   }
@@ -167,6 +174,7 @@ function Comment({ pageRef, comment }: CommentProps) {
   const { data: user } = useUser()
   const { data, children: replies } = comment
   const { name, timestamp, text } = data
+  const hash = `comment-${comment.id}`
 
   const [replyShown, setReplyShown] = useState(false)
 
@@ -176,17 +184,23 @@ function Comment({ pageRef, comment }: CommentProps) {
   }
 
   return (
-    <li key={comment.id} className="usapan-comment">
+    <li key={comment.id} className="usapan-comment" id={hash}>
       <div className="usapan-comment-content">
         <div className="usapan-comment-meta">
           <strong className="usapan-comment-name">{name}</strong>
-          <time
-            className="usapan-comment-timestamp"
-            dateTime={timestamp?.toDate().toISOString()}
-            title={timestamp?.toDate().toISOString()}
-          >
-            {timestamp ? <TimeAgo date={timestamp.toDate()} /> : 'moments ago'}
-          </time>
+          <a href={`#${hash}`} className="usapan-comment-permalink">
+            <time
+              className="usapan-comment-timestamp"
+              dateTime={timestamp?.toDate().toISOString()}
+              title={timestamp?.toDate().toISOString()}
+            >
+              {timestamp ? (
+                <TimeAgo date={timestamp.toDate()} />
+              ) : (
+                'moments ago'
+              )}
+            </time>
+          </a>
         </div>
         <div className="usapan-comment-text">{text}</div>
         {user ? (

@@ -37,10 +37,12 @@ _Usapan is the Filipino word for discussion_
 
 ## Todo
 
-- [ ] Permalinks
+- [x] Permalinks
 - [ ] Reactions
 - [ ] Anonymous mode
 - [ ] Reduce bundle size
+  - [x] Switch from React to Preact
+  - [ ] Add Cloudflare as alternative storage option
 - [ ] Moderation
 
 ## Demo
